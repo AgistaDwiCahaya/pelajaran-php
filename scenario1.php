@@ -39,73 +39,94 @@
 ?>
 
 <h2>Scenario 3</h2>
-<h3>Jadwal Andi</h3>
+<h3>Jadwal Harian Andi</h3>
+<p>
+    Siang & Sore:
+    <br>15:30 - 15:45 → Pulang sekolah (sudah sampai rumah)
+    <br>15:45 - 16:00 → Mandi
+    <br>16:00 - 16:30 → Mengaji 30 menit
+    <br>16:30 - 17:30 → Mengerjakan tugas 1 jam (jika ada tugas) / Waktu luang (main HP, istirahat) (jika tidak ada tugas, waktu berikutnya maju)
+    <br>17:30 - 18:00 → Chatting dengan Raya
+    <br>18:00 - 18:10 → Sholat Maghrib
+    <br>18:10 - 18:20 → Membeli bumbu
+    <br>18:20 - 18:30 → Waktu luang sambil menunggu ibu memasak
+    <br>18:30 - 19:00 → Makan malam
+    <br>19:00 - 19:10 → Sholat Isya
+    <br>19:10 - 19:40 → Menghafal dialog untuk festival (jika ada tugas) / Kegiatan santai atau membantu orang tua (jika tidak ada tugas) <br>
+    <br>Malam:
+    <br>19:40 - 20:40 → Melanjutkan mengerjakan tugas (jika ada tugas) / Waktu luang (main HP, baca buku, atau istirahat) (jika tidak ada tugas, waktu berikutnya maju)
+    <br>20:40 - 21:10 → Mengobrol dengan keluarga
+    <br>21:10 - 22:00 → Waktu luang (Tiktok-an, persiapan tidur)
+    <br>22:00 - 04:00 → Tidur <br>
+    <br>Pagi:
+    <br>04:00 → Bangun tidur
+    <br>04:10 → Sholat Subuh
+    <br>04:10 - 06:30 → Persiapan sekolah (mandi, sarapan, dll)
+    <br>07:00 → Berangkat sekolah
+    <br>07:00 - 15:30 → Sekolah <br>
+    <br>Catatan:
+    <br>Jika tidak ada tugas, kegiatan selanjutnya akan maju.
+    <br>Waktu luang bisa digunakan untuk istirahat, bermain HP, atau membantu orang tua.
+</p>
 <?php
-    // Pulang sekolah : 15:30 - 15:45 (sudah sampai rumah)
-    // Mandi 15:45-16:00
-    // Mengaji 30 menit (16:00-16:30)
-    // Mengerjakan tugas 1 jam (16:30-17:30)
-    // Menghafal dialog untuk festival 30 menit (sampai sini jam sudah pukul 18:00)
-    // Sholat mahgrib 10 menit (18.10)
-    // Membeli bumbu 10 menit (18:20)
-    // Waktu luang sambil menunggu ibu memasak 10 menit (18:30)
-    // Makan malam antara jam 18:30-19:00
-    // Sholat isya 10 menit (19:10)
-    // Chatting dengan Raya 30 menit (19:40)
-    // Melanjutkan mengerjakan tugas 1 jam (19:40-20:40)
-    // Mengobrol dengan keluarga 30 menit (20:40-21:10)
-    // 21:10-22:00 (waktu luang) tiktok an dan persiapan tidur
-    // Andi tidur jam 22:00
-    // Bangun 04:00
-    // Sholat subuh 10 menit (04:10)
-    // Persiapan sekolah 04:10-06:30 (mandi, sarapan, dll)
-    // Berangkat sekolah 30 menit (07:00)
-    // Sekolah 07:00-15:30
- 
-    $jam = date("15:30");
+    $jam = date("17:35");
+
+    $ada_tugas = true;
 
     if ($jam >= "15:30" && $jam < "15:45") {
-        echo "<br>Jam $jam, Andi dalam perjalanan pulang ke rumah.";
+        echo "Jam $jam, Andi dalam perjalanan pulang ke rumah.";
     } elseif ($jam >= "15:45" && $jam < "16:00") {
-        echo "<br>Jam $jam, Andi sedang mandi.";
+        echo "Jam $jam, Andi sedang mandi.";
     } elseif ($jam >= "16:00" && $jam < "16:30") {
-        echo "<br>Jam $jam, Andi sedang mengaji.";
+        echo "Jam $jam, Andi sedang mengaji.";
     } elseif ($jam >= "16:30" && $jam < "17:30") {
-        echo "<br>Jam $jam, Andi sedang mengerjakan tugas.";
+        if ($ada_tugas) {
+            echo "Jam $jam, Andi sedang mengerjakan tugas.";
+        } else {
+            echo "Jam $jam, Andi tidak punya tugas sekolah, jadi Andi memiliki waktu luang.";
+        }
     } elseif ($jam >= "17:30" && $jam < "18:00") {
-        echo "<br>Jam $jam, Andi menghafal dialog untuk festival.";
+        if ($ada_tugas) {
+            echo "Jam $jam, Andi chatting dengan Raya";
+        } else {
+            echo "Jam $jam, Andi membantu orang tua atau bersantai.";
+        }
     } elseif ($jam >= "18:00" && $jam < "18:10") {
-        echo "<br>Jam $jam, Andi melaksanakan sholat maghrib.";
+        echo "Jam $jam, Andi melaksanakan sholat maghrib.";
     } elseif ($jam >= "18:10" && $jam < "18:20") {
-        echo "<br>Jam $jam, Andi membeli bumbu dapur.";
+        echo "Jam $jam, Andi membeli bumbu dapur.";
     } elseif ($jam >= "18:20" && $jam < "18:30") {
-        echo "<br>Jam $jam, Andi memiliki waktu luang sembari menunggu ibu memasak.";
+        echo "Jam $jam, Andi memiliki waktu luang sembari menunggu ibu memasak.";
     } elseif ($jam >= "18:30" && $jam < "19:00") {
-        echo "<br>Jam $jam, Andi makan malam bersama keluarganya.";
+        echo "Jam $jam, Andi makan malam bersama keluarga.";
     } elseif ($jam >= "19:00" && $jam < "19:10") {
-        echo "<br>Jam $jam, Andi melaksanakan sholat isya.";
+        echo "Jam $jam, Andi melaksanakan sholat isya.";
     } elseif ($jam >= "19:10" && $jam < "19:40") {
-        echo "<br>Jam $jam, Andi chatting dengan Raya.";
+        echo "Jam $jam, Andi sedang menghafal dialog untuk festival.";
     } elseif ($jam >= "19:40" && $jam < "20:40") {
-        echo "<br>Jam $jam, Andi melanjutkan mengerjakan tugas.";
+        if ($ada_tugas) {
+            echo "Jam $jam, Andi melanjutkan mengerjakan tugas.";
+        } else {
+            echo "Jam $jam, Andi memiliki waktu luang (main HP, baca buku, atau istirahat).";
+        }
     } elseif ($jam >= "20:40" && $jam < "21:10") {
-        echo "<br>Jam $jam, Andi mengobrol bersama keluarganya.";
+        echo "Jam $jam, Andi mengobrol bersama keluarga.";
     } elseif ($jam >= "21:10" && $jam < "22:00") {
-        echo "<br>Jam $jam, Andi memiliki waktu luang untuk tiktokan dan persiapan tidur.";
+        echo "Jam $jam, Andi memiliki waktu luang untuk TikTok-an dan persiapan tidur.";
     } elseif ($jam >= "22:00" && $jam < "04:00") {
-        echo "<br>Jam $jam, Andi sedang tidur.";
+        echo "Jam $jam, Andi sedang tidur.";
     } elseif ($jam >= "04:00" && $jam < "04:10") {
-        echo "<br>Jam $jam, Andi bangun tidur.";
+        echo "Jam $jam, Andi bangun tidur.";
     } elseif ($jam >= "04:10" && $jam < "06:30") {
-        echo "<br>Jam $jam, Andi bersiap berangkat sekolah.";
+        echo "Jam $jam, Andi bersiap berangkat sekolah.";
     } elseif ($jam >= "06:30" && $jam < "07:00") {
-        echo "<br>Jam $jam, Andi dalam perjalanan ke sekolah.";
+        echo "Jam $jam, Andi dalam perjalanan ke sekolah.";
     } elseif ($jam >= "07:00" && $jam < "15:30") {
-        echo "<br>Jam $jam, Andi sedang sekolah.";
+        echo "Jam $jam, Andi sedang sekolah.";
     } else {
-        echo "<br> Andi mokad.";
+        echo "Jam $jam, Andi mokad.";
     }
-?>
+    ?>
 
 <h2>Bahan Diskusi</h2>
 <p>1. Apa yang perlu diperhatikan saat menentukan jadwal Andi sehingga tidak ada jadwal yang bertumpuk atau terlewat?</p>
@@ -115,7 +136,7 @@
 <p>Jawab: Karena sudah memperhitungkan waktu yang pas agar jadwal lebih efisien.</p>
 
 <p>3. Jam berapa Andi dan Raya melakukan chatting waktu lokal rumah Raya?</p>
-<p>Jawab: Perbedaan waktu 4 jam lebih cepat di rumah Andi. Jika Andi chatting pukul 19:10, maka waktu lokal rumah Raya adalah 23:10.</p>
+<p>Jawab: Perbedaan waktu 4 jam lebih cepat di rumah Andi. Jika Andi chatting pukul 17:30, maka waktu lokal rumah Raya adalah 21:30.</p>
 
 <p>4. Apakah masih ada waktu untuk Andi memiliki waktu luang? Jam berapakah?</p>
 <p>Jawab: Andi memiliki waktu luang beberapa menit saat menunggu ibu memasak makan malam dan waktu persiapan tidur pada pukul 21:10 sampai 22:00.</p>
